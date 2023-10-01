@@ -1,6 +1,8 @@
 
-# Problem Statement:
+# The island problem by Harshavardhan , Hyson and Soham Kulkarni
+# Emails ID's: harsha_jemedar@csu.fullerton.edu, kulkarni.soham@csu.fullerton.edu, hyson0427@csu.fullerton.edu
 
+import matplotlib.pyplot as plt
 def largest_land_mass(Grid_matrix):
 
     # Initialize a variable max_land_area to 0. 
@@ -42,3 +44,15 @@ Grid_matrix2 = [
 ]
 print("The largest Land mass area of grid 1 is:",(largest_land_mass(Grid_matrix1)))
 print("The largest Land mass area of grid 2 is:",(largest_land_mass(Grid_matrix2)))
+
+# Sample data points (input sizes and corresponding execution times)
+input_sizes = [10, 20, 30, 40, 50]
+execution_times = [0.1, 0.4, 0.9, 1.6, 2.5]
+
+# Plot the data
+plt.plot(input_sizes, execution_times, marker='o')
+plt.xlabel('Input Size')
+plt.ylabel('Execution Time (seconds)')
+plt.title('Unique Starting City Execution Time')
+plt.grid(True)
+plt.show()
