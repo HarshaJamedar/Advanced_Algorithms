@@ -1,0 +1,51 @@
+import matplotlib.pyplot as plt
+def find_most_frequent_subsequence(sequences, subsequence_length, threshold):
+    # Combine all sequences into one long sequence
+    combined_sequence = ''.join(sequences)
+    max_count = 0
+    most_frequent_subsequence = None
+    subsequence_counts = {}
+
+    # Initialize the first subsequence
+    current_subsequence = combined_sequence[:subsequence_length]
+
+    # Count the initial subsequence in the dictionary
+    subsequence_counts[current_subsequence] = 1
+
+    # Iterate through the combined sequence with a sliding window
+    for i in range(subsequence_length, len(combined_sequence)):
+        # Remove the first character of the current subsequence
+        current_subsequence = current_subsequence[1:]
+        # Add the next character
+        current_subsequence += combined_sequence[i]
+
+        # Update the count of the current subsequence
+        subsequence_counts[current_subsequence] = subsequence_counts.get(current_subsequence, 0) + 1
+
+        # Check if the count exceeds the threshold and is greater than the current maximum
+        if subsequence_counts[current_subsequence] > threshold and subsequence_counts[current_subsequence] > max_count:
+            max_count = subsequence_counts[current_subsequence]
+            most_frequent_subsequence = current_subsequence
+
+    return most_frequent_subsequence
+
+# Example usage with provided sequences
+sequences = ["ATAGCTGATG", "GATAGCTGTA", "CTGATAGCTA"]
+subsequence_length = 3
+threshold = 2
+
+result = find_most_frequent_subsequence(sequences, subsequence_length, threshold)
+print("Most frequent subsequence:", result)
+
+
+# Sample data points (input sizes and corresponding execution times)
+input_sizes = [10, 20, 30, 40, 50]
+execution_times = [0.1, 0.4, 0.9, 1.6, 2.5]
+
+# Plot the data
+plt.plot(input_sizes, execution_times, marker='o')
+plt.xlabel('Input Size')
+plt.ylabel('Execution Time (seconds)')
+plt.title('RT Algorithm Execution Time')
+plt.grid(True)
+plt.show()
