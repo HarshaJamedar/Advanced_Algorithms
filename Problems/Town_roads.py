@@ -44,8 +44,8 @@ graph = {
 
 
 # Specify the starting and ending points.
-start_point = 'MH'  # Mayor's House
-end_point = 'IN'    # Inn
+start_point = 'MH'  
+end_point = 'IN'    
 
 # Find the shortest path distance.
 shortest_distance = dijkstra(graph, start_point, end_point)
